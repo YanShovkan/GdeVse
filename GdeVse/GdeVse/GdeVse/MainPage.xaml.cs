@@ -27,10 +27,15 @@ namespace GdeVse
 
             Button btnToMap = new Button();
             btnToMap.Text = "Карта";
-            btnToProfile.Clicked += BtnToProfile_Clicked;
-            layout.Children.Add(btnToProfile);
+            btnToMap.Clicked += BtnToMap_Clicked;
+            layout.Children.Add(btnToMap);
 
             Content = layout;
+        }
+
+        private void BtnToMap_Clicked(object sender, System.EventArgs e)
+        {
+            throw new System.NotImplementedException();
         }
 
         private async void BtnToProfile_Clicked(object sender, System.EventArgs e)

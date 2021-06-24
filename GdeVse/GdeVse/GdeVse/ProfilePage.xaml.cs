@@ -21,7 +21,14 @@ namespace GdeVse
         {
             StackLayout layout = new StackLayout();
 
+            Label labelFullName = new Label();
+            labelFullName.Text = "Имя пользователя";
+            labelFullName.FontSize = 16;
+            labelFullName.TextColor = Color.Black;
+            layout.Children.Add(labelFullName);
 
+            Entry FullName = new Entry();
+            layout.Children.Add(FullName);
 
             Content = layout;
         }
