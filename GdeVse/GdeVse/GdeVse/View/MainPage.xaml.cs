@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace GdeVse
+namespace GdeVse.View
 {
     public partial class MainPage : ContentPage
     {
