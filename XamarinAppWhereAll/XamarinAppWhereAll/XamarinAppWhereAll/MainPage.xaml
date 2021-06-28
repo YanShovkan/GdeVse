@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             x:Class="XamarinAppWhereAll.MainPage"
+             Title="Where All">
+
+    <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+        <StackLayout>
+            <Frame BackgroundColor="DeepPink" Padding="24" CornerRadius="0">
+                <Label Text="Where All" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+            </Frame>
+            <ListView x:Name="MeetingListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Button x:Name="ButtonOpenMap"
+                                    Text="{Binding MeetingName}" 
+                                    Clicked="ButtonOpenMap_Clicked"
+                                    BackgroundColor="White"
+                                    BorderColor="Black"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+        <Grid AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="1, 1, AutoSize, AutoSize">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="ButtonCreateMeeting"
+                    Grid.Column="0"
+                    Text="+"
+                    Clicked="ButtonCreateMeeting_Clicked" 
+                    IsVisible="True"
+                    Style="{StaticResource FABPrimary}"/>
+            <Button x:Name="ButtonGetProfile"
+                    Grid.Column="1"
+                    Text="P"
+                    Clicked="ButtonGetProfile_Clicked" 
+                    IsVisible="True"
+                    Style="{StaticResource FABPrimary}"/>
+        </Grid>
+    </AbsoluteLayout>
+
+</ContentPage>

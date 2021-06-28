@@ -1,0 +1,16 @@
+C:\Users\Vladislav\source\repos\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\bin\Release\netstandard2.0\XamarinAppWhereAll.deps.json
+C:\Users\Vladislav\source\repos\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\bin\Release\netstandard2.0\XamarinAppWhereAll.dll
+C:\Users\Vladislav\source\repos\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\bin\Release\netstandard2.0\ref\XamarinAppWhereAll.dll
+C:\Users\Vladislav\source\repos\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\bin\Release\netstandard2.0\XamarinAppWhereAll.pdb
+C:\Users\Vladislav\source\repos\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Release\netstandard2.0\App.xaml.g.cs
+C:\Users\Vladislav\source\repos\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Release\netstandard2.0\MainPage.xaml.g.cs
+C:\Users\Vladislav\source\repos\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Release\netstandard2.0\MapPage.xaml.g.cs
+C:\Users\Vladislav\source\repos\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Release\netstandard2.0\View\CreateMeetingPage.xaml.g.cs
+C:\Users\Vladislav\source\repos\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Release\netstandard2.0\View\ProfilePage.xaml.g.cs
+C:\Users\Vladislav\source\repos\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Release\netstandard2.0\XamarinAppWhereAll.AssemblyInfoInputs.cache
+C:\Users\Vladislav\source\repos\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Release\netstandard2.0\XamarinAppWhereAll.AssemblyInfo.cs
+C:\Users\Vladislav\source\repos\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Release\netstandard2.0\XamarinAppWhereAll.csproj.CoreCompileInputs.cache
+C:\Users\Vladislav\source\repos\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Release\netstandard2.0\XamlC.stamp
+C:\Users\Vladislav\source\repos\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Release\netstandard2.0\XamarinAppWhereAll.dll
+C:\Users\Vladislav\source\repos\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Release\netstandard2.0\ref\XamarinAppWhereAll.dll
+C:\Users\Vladislav\source\repos\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Release\netstandard2.0\XamarinAppWhereAll.pdb

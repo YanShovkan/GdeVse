@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "154089692265",
+    "project_id": "xamarinapp-317906",
+    "storage_bucket": "xamarinapp-317906.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:154089692265:android:c3f85a7501a3d6315cd6f8",
+        "android_client_info": {
+          "package_name": "com.companyname.xamarinappwhereall"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "154089692265-n097db0gtams352klfm3sv5pb6b8de4s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.companyname.xamarinappwhereall",
+            "certificate_hash": "a2aabc8a5e0e324f6538a4ff73bfe25c71000df1"
+          }
+        },
+        {
+          "client_id": "154089692265-2prninougecm6s65i23gu0i9qsojjoim.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPKS2OuscbZrtQCvxrtudZNdxf614cAtw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "154089692265-2prninougecm6s65i23gu0i9qsojjoim.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
