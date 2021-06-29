@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamarinAppWhereAll.View;
 
 namespace XamarinAppWhereAll
 {
@@ -10,7 +11,7 @@ namespace XamarinAppWhereAll
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()
