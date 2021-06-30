@@ -3,11 +3,11 @@ namespace XamarinAppWhereAll.AppConstant
 {
     public class Constants
     {
-		public static string AppName = "OAuthNativeFlow";
+		public static string AppName = "XamarinApp";
 
 		// OAuth
 		// For Google login, configure at https://console.developers.google.com/
-		public static string AndroidClientId = "844060696235-ltgivjolb8v7ioidint435qa2o8ls38d.apps.googleusercontent.com";
+		public static string AndroidClientId = "154089692265-n097db0gtams352klfm3sv5pb6b8de4s.apps.googleusercontent.com";
 
 		// These values do not need changing
 		public static string Scope = "https://www.googleapis.com/auth/userinfo.email";
@@ -16,6 +16,6 @@ namespace XamarinAppWhereAll.AppConstant
 		public static string UserInfoUrl = "https://www.googleapis.com/oauth2/v2/userinfo";
 
 		// Set these to reversed iOS/Android client ids, with :/oauth2redirect appended
-		public static string AndroidRedirectUrl = "com.googleusercontent.apps.844060696235-ltgivjolb8v7ioidint435qa2o8ls38d:/oauth2redirect";
+		public static string AndroidRedirectUrl = "com.googleusercontent.apps.154089692265-n097db0gtams352klfm3sv5pb6b8de4s:/oauth2redirect";
 	}
 }

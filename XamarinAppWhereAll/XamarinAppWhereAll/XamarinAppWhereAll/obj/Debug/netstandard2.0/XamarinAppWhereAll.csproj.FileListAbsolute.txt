@@ -19,7 +19,6 @@ C:\Users\shovk\GdeVse\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\b
 C:\Users\shovk\GdeVse\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\bin\Debug\netstandard2.0\XamarinAppWhereAll.dll
 C:\Users\shovk\GdeVse\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\bin\Debug\netstandard2.0\ref\XamarinAppWhereAll.dll
 C:\Users\shovk\GdeVse\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\bin\Debug\netstandard2.0\XamarinAppWhereAll.pdb
-C:\Users\shovk\GdeVse\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Debug\netstandard2.0\XamarinAppWhereAll.csprojAssemblyReference.cache
 C:\Users\shovk\GdeVse\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Debug\netstandard2.0\App.xaml.g.cs
 C:\Users\shovk\GdeVse\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Debug\netstandard2.0\View\CreateMeetingPage.xaml.g.cs
 C:\Users\shovk\GdeVse\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Debug\netstandard2.0\View\ProfilePage.xaml.g.cs
@@ -33,3 +32,4 @@ C:\Users\shovk\GdeVse\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\o
 C:\Users\shovk\GdeVse\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Debug\netstandard2.0\View\LoginPage.xaml.g.cs
 C:\Users\shovk\GdeVse\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Debug\netstandard2.0\View\MainPage.xaml.g.cs
 C:\Users\shovk\GdeVse\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Debug\netstandard2.0\View\MapPage.xaml.g.cs
+C:\Users\shovk\GdeVse\XamarinAppWhereAll\XamarinAppWhereAll\XamarinAppWhereAll\obj\Debug\netstandard2.0\XamarinAppWhereAll.csprojAssemblyReference.cache
