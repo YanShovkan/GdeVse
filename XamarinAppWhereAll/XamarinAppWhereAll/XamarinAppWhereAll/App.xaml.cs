@@ -1,29 +1,43 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XamarinAppWhereAll.Models;
 using XamarinAppWhereAll.View;
 
 namespace XamarinAppWhereAll
 {
     public partial class App : Application
     {
+        public static UserModel CurrentUser;
+        private readonly FirebaseHelper firebaseHelper = new FirebaseHelper();
         public App()
         {
             InitializeComponent();
 
-            MainPage = new LoginPage();
+            MainPage = new EnterPage();
         }
 
         protected override void OnStart()
-        {
+        {            
         }
 
-        protected override void OnSleep()
+        protected override async void OnSleep()
         {
+            base.OnSleep();
+            if (CurrentUser != null)
+            {
+                await firebaseHelper.CheckUserInDatabase(CurrentUser.Login, CurrentUser.Password, false);
+            }
         }
 
-        protected override void OnResume()
+        protected override async void OnResume()
         {
+            base.OnResume();
+            if (CurrentUser != null)
+            {
+                await firebaseHelper.CheckUserInDatabase(CurrentUser.Login, CurrentUser.Password, true);
+            }
         }
+
     }
 }

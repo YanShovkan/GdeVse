@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -7,9 +8,13 @@ namespace XamarinAppWhereAll.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ProfilePage : ContentPage
     {
+        private readonly FirebaseHelper firebaseHelper = new FirebaseHelper();
+        Entry EntryUserName = new Entry();
+        Button ButtonSaveProfileInfo = new Button();
         public ProfilePage()
         {
             InitializeComponent();
+            EntryUserName.Text = App.CurrentUser.UserName;
         }
 
         protected override void OnAppearing()
@@ -38,9 +43,6 @@ namespace XamarinAppWhereAll.View
                 }
             };
 
-            Entry EntryUserName = new Entry();
-
-            Button ButtonSaveProfileInfo = new Button();
             ButtonSaveProfileInfo.Text = "Save";
             ButtonSaveProfileInfo.FontSize = 18;
 
@@ -58,9 +60,36 @@ namespace XamarinAppWhereAll.View
 
             Content = stackLayout;
         }
+        private async Task SaveItem()
+        {
+            try
+            {
+                if (EntryUserName.Text == null)
+                {
+                    await DisplayAlert("Warning", "Fill in the name field!", "OK");
+                    return;
+                }
+
+                await firebaseHelper.UpdateUser(App.CurrentUser.Login, EntryUserName.Text);
+
+                Application.Current.MainPage = new MainPage();
+            }
+            catch (Exception e)
+            {
+                await DisplayAlert("Warning", e.Message, "OK");
+            }
+        }
+
         private void ButtonSaveProfileInfo_Clicked(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new MainPage();
+            Task.Run(() =>
+            {
+                Device.BeginInvokeOnMainThread(
+                    async () =>
+                    {
+                        await SaveItem();
+                    });
+            });
         }
     }
 }

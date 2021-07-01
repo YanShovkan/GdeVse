@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\shovk\\GdeVse\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj": {}
+    "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj": {}
   },
   "projects": {
-    "C:\\Users\\shovk\\GdeVse\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj": {
+    "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shovk\\GdeVse\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj",
+        "projectUniqueName": "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj",
         "projectName": "XamarinAppWhereAll",
-        "projectPath": "C:\\Users\\shovk\\GdeVse\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj",
+        "projectPath": "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj",
         "packagesPath": "C:\\Users\\shovk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shovk\\GdeVse\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\obj\\",
+        "outputPath": "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -57,10 +57,6 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
-            },
-            "Xamarin.Auth": {
-              "target": "Package",
-              "version": "[1.7.0, )"
             },
             "Xamarin.Essentials": {
               "target": "Package",

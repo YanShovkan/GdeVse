@@ -93,7 +93,7 @@ namespace XamarinAppWhereAll.View
                     return;
                 }
 
-                await firebaseHelper.AddMeeting(1, EntryMeetingName.Text, EntryAddress.Text,
+                await firebaseHelper.AddMeeting(EntryMeetingName.Text, EntryAddress.Text,
                     new DateTime(DatePickerDate.Date.Year, DatePickerDate.Date.Month, DatePickerDate.Date.Day, TimePickerStart.Time.Hours, TimePickerStart.Time.Minutes, TimePickerStart.Time.Seconds));
 
                 Application.Current.MainPage = new MainPage();

@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "154089692265",
+    "firebase_url": "https://xamarinapp-317906-default-rtdb.firebaseio.com",
     "project_id": "xamarinapp-317906",
     "storage_bucket": "xamarinapp-317906.appspot.com"
   },
@@ -14,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "154089692265-n097db0gtams352klfm3sv5pb6b8de4s.apps.googleusercontent.com",
+          "client_id": "154089692265-uo8ehkqp1p0s7vpq6lsnatm8jq5ma2ui.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.companyname.xamarinappwhereall",
-            "certificate_hash": "a2aabc8a5e0e324f6538a4ff73bfe25c71000df1"
+            "certificate_hash": "31cf22da49c89ce16d8c7770f7f520e2d637c61f"
           }
         },
         {

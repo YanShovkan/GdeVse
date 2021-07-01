@@ -186,15 +186,6 @@
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
         }
       },
-      "Xamarin.Auth/1.7.0": {
-        "type": "package",
-        "compile": {
-          "lib/netstandard1.6/Xamarin.Auth.dll": {}
-        },
-        "runtime": {
-          "lib/netstandard1.6/Xamarin.Auth.dll": {}
-        }
-      },
       "Xamarin.Essentials/1.6.1": {
         "type": "package",
         "dependencies": {
@@ -1087,31 +1078,6 @@
         "system.threading.tasks.nuspec"
       ]
     },
-    "Xamarin.Auth/1.7.0": {
-      "sha512": "F5yMDdHmcBRochGOeeyIRJ2fangsCEodSbOwg4TQT5kJnsT/CjP6ieXbFfFF9ccni66EgbQ7NTTjvajUlD3IGQ==",
-      "type": "package",
-      "path": "xamarin.auth/1.7.0",
-      "files": [
-        ".nupkg.metadata",
-        ".signature.p7s",
-        "lib/MonoAndroid10/Xamarin.Auth.dll",
-        "lib/MonoAndroid10/Xamarin.Auth.dll.mdb",
-        "lib/MonoAndroid10/Xamarin.Auth.pdb",
-        "lib/Xamarin.iOS10/Xamarin.Auth.dll",
-        "lib/Xamarin.iOS10/Xamarin.Auth.pdb",
-        "lib/netstandard1.0/Xamarin.Auth.dll",
-        "lib/netstandard1.6/Xamarin.Auth.dll",
-        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+XamarinIOS10/Xamarin.Auth.dll",
-        "lib/portable-net45+wp8+wpa81+win8+MonoAndroid10+MonoTouch10+XamarinIOS10/Xamarin.Auth.pdb",
-        "lib/uap10.0/Xamarin.Auth.dll",
-        "lib/uap10.0/Xamarin.Auth.pdb",
-        "lib/uap10.0/Xamarin.Auth.pri",
-        "lib/uap10.0/Xamarin.Auth/WebAuthenticatorPage.xbf",
-        "lib/uap10.0/Xamarin.Auth/Xamarin.Auth.xr.xml",
-        "xamarin.auth.1.7.0.nupkg.sha512",
-        "xamarin.auth.nuspec"
-      ]
-    },
     "Xamarin.Essentials/1.6.1": {
       "sha512": "gG1Bp4j4bpJQ0dp9MeBJQJ9c8xULauIlhc7Cx5Qw4J2K1c+4Glq5n+gkb9Pm0UA/CevXVqLK5ZXmZkuYI52FgA==",
       "type": "package",
@@ -1419,7 +1385,6 @@
       "FirebaseDatabase.net >= 4.0.6",
       "NETStandard.Library >= 2.0.3",
       "Newtonsoft.Json >= 13.0.1",
-      "Xamarin.Auth >= 1.7.0",
       "Xamarin.Essentials >= 1.6.1",
       "Xamarin.Forms >= 5.0.0.2012",
       "Xamarin.Forms.Maps >= 5.0.0.2012"
@@ -1432,11 +1397,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\shovk\\GdeVse\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj",
+      "projectUniqueName": "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj",
       "projectName": "XamarinAppWhereAll",
-      "projectPath": "C:\\Users\\shovk\\GdeVse\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj",
+      "projectPath": "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj",
       "packagesPath": "C:\\Users\\shovk\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\shovk\\GdeVse\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\obj\\",
+      "outputPath": "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -1482,10 +1447,6 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.1, )"
-          },
-          "Xamarin.Auth": {
-            "target": "Package",
-            "version": "[1.7.0, )"
           },
           "Xamarin.Essentials": {
             "target": "Package",

@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
@@ -7,6 +6,16 @@ using Android.OS;
 using Android.Gms.Maps.Model;
 using Xamarin.Forms.Maps;
 using Android.Gms.Maps;
+using Android.Gms.Auth.Api.SignIn;
+using Android.Gms.Auth.Api;
+using Android.Support.V7.App;
+using Android.Widget;
+using Android.Gms.Common.Apis;
+using Firebase;
+using Android.Content;
+using Android.Gms.Tasks;
+using Java.Lang;
+using System.Threading.Tasks;
 
 namespace XamarinAppWhereAll.Droid
 {
@@ -19,10 +28,10 @@ namespace XamarinAppWhereAll.Droid
             Xamarin.FormsMaps.Init(this, savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            global::Xamarin.Auth.Presenters.XamarinAndroid.AuthenticationConfiguration.Init(this, savedInstanceState);
             LoadApplication(new App());
         }
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 

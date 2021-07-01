@@ -15,24 +15,22 @@ namespace XamarinAppWhereAll
         {
             return (await firebase.Child("Meetings").OnceAsync<MeetingModel>()).Select(item => new MeetingModel
             {
-                MeetingId = item.Object.MeetingId,
                 MeetingName = item.Object.MeetingName,
                 Address = item.Object.Address,
                 MeetingStartTime = item.Object.MeetingStartTime
             }).ToList();
         }
 
-        public async Task AddMeeting(int MeetingId, string MeetingName, string Address, DateTime MeetingStartTime)
+        public async Task AddMeeting(string MeetingName, string Address, DateTime MeetingStartTime)
         {
-            var allMeetings = await GetAllMeetings();
-            var numberOfMeetings = allMeetings.Where(m => m.MeetingName.ToLower().Equals(MeetingName.ToLower())).Count();
+            List<MeetingModel> allMeetings = await GetAllMeetings();
+            int numberOfMeetings = allMeetings.Where(m => m.MeetingName.ToLower().Equals(MeetingName.ToLower())).Count();
             if (numberOfMeetings != 0)
             {
                 throw new Exception("There is already a meeting with this name!");
             }
             await firebase.Child("Meetings").PostAsync(new MeetingModel()
             {
-                MeetingId = MeetingId,
                 MeetingName = MeetingName,
                 Address = Address,
                 MeetingStartTime = MeetingStartTime
@@ -41,8 +39,75 @@ namespace XamarinAppWhereAll
 
         public async Task<MeetingModel> GetMeeting(string MeetingName)
         {
-            var allMeetings = await GetAllMeetings();
-            return allMeetings.Where(m => m.MeetingName == MeetingName).FirstOrDefault();
+            List<MeetingModel> allMeetings = await GetAllMeetings();
+            return allMeetings.FirstOrDefault(m => m.MeetingName == MeetingName);
+        }
+
+        public async Task<List<UserModel>> GetAllUsers()
+        {
+            return (await firebase.Child("Users").OnceAsync<UserModel>()).Select(item => new UserModel
+            {
+                UserName = item.Object.UserName,
+                Login = item.Object.Login,
+                Password = item.Object.Password,
+                Latitude = item.Object.Latitude,
+                Longitude = item.Object.Longitude,
+                IsActive = item.Object.IsActive
+            }).ToList();
+        }
+        public async Task AddUser(string UserName, string Login, string Password, double Latitude, double Longitude, bool IsActive)
+        {
+            List<UserModel> allUsers = await GetAllUsers();
+            int numberOfUsers = allUsers.Where(m => m.Login.ToLower().Equals(Login.ToLower())).Count();
+            if (numberOfUsers != 0)
+            {
+                throw new Exception("There is already a user with this login!");
+            }
+            await firebase.Child("Users").PostAsync(new UserModel()
+            {
+                UserName = UserName,
+                Login = Login,
+                Password = Password,
+                Latitude = Latitude,
+                Longitude = Longitude,
+                IsActive = IsActive
+            });
+        }
+
+        public async Task UpdateUser(string Login, string UserName)
+        {
+            FirebaseObject<UserModel> toUpdateUser = (await firebase.Child("Users").OnceAsync<UserModel>()).Where(a => a.Object.Login == Login).FirstOrDefault();
+            await firebase.Child("Users").Child(toUpdateUser.Key).PutAsync(new UserModel()
+            {
+                UserName = UserName,
+                Login = toUpdateUser.Object.Login,
+                Password = toUpdateUser.Object.Password,
+                Longitude = toUpdateUser.Object.Longitude,
+                Latitude = toUpdateUser.Object.Latitude,
+                IsActive = toUpdateUser.Object.IsActive
+            });
+        }
+        public async Task<UserModel> GetUser(string Login)
+        {
+            List<UserModel> allUsers = await GetAllUsers();
+            return allUsers.FirstOrDefault(m => m.Login == Login);
+        }
+        public async Task CheckUserInDatabase(string Login, string Password, bool IsActive)
+        {
+            FirebaseObject<UserModel> user = (await firebase.Child("Users").OnceAsync<UserModel>()).Where(u => u.Object.Login == Login && u.Object.Password == Password).FirstOrDefault();
+            if (user == null)
+            {
+                throw new Exception("Wrong login or password!");
+            }
+            await firebase.Child("Users").Child(user.Key).PutAsync(new UserModel()
+            {
+                UserName = user.Object.UserName,
+                Login = user.Object.Login,
+                Password = user.Object.Password,
+                Longitude = user.Object.Longitude,
+                Latitude = user.Object.Latitude,
+                IsActive = IsActive
+            });
         }
     }
 }

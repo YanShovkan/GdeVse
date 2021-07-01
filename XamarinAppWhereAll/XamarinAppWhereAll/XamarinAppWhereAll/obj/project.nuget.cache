@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "jSqRRs1/gSL3ZDZxmf4XWTA6CxZLAUiXyegU4LW/oO7KPhRC76DpcquKryN6mYXTERUUbWVvUVajfAZEU9Ct1w==",
+  "dgSpecHash": "YflnecpxsD6tmgZZHJP8lyG51GomgMqls6V/1k+IdJncZv8W85iy7z6f+Mi5BKlY4ZXXT7fgKkZzEpVpFEooXw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\shovk\\GdeVse\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj",
+  "projectFilePath": "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\shovk\\.nuget\\packages\\firebasedatabase.net\\4.0.6\\firebasedatabase.net.4.0.6.nupkg.sha512",
     "C:\\Users\\shovk\\.nuget\\packages\\litedb\\4.1.4\\litedb.4.1.4.nupkg.sha512",
@@ -20,7 +20,6 @@
     "C:\\Users\\shovk\\.nuget\\packages\\system.runtime.interopservices.windowsruntime\\4.3.0\\system.runtime.interopservices.windowsruntime.4.3.0.nupkg.sha512",
     "C:\\Users\\shovk\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
     "C:\\Users\\shovk\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
-    "C:\\Users\\shovk\\.nuget\\packages\\xamarin.auth\\1.7.0\\xamarin.auth.1.7.0.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.essentials\\1.6.1\\xamarin.essentials.1.6.1.nupkg.sha512",
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\xamarin.forms\\5.0.0.2012\\xamarin.forms.5.0.0.2012.nupkg.sha512",
     "C:\\Users\\shovk\\.nuget\\packages\\xamarin.forms.maps\\5.0.0.2012\\xamarin.forms.maps.5.0.0.2012.nupkg.sha512"

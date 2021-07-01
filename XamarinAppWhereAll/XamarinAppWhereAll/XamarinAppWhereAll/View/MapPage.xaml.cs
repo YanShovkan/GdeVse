@@ -6,102 +6,119 @@ using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
-using System.Threading;
 using System.IO;
+using System.Threading;
 
 namespace XamarinAppWhereAll.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MapPage : ContentPage
     {
-        private readonly Geocoder geoCoder = new Geocoder();
         private readonly List<Pin> pins = new List<Pin>();
         private readonly string meetingAddress = "";
-        public MapPage(string address)
+        private Position meetingPosition = new Position();
+        private int timeForRequest = 20;
+        private int distanceBetweenTwoPoints;
+        public MapPage(string _meetingAddress)
         {
             InitializeComponent();
-            meetingAddress = address;
 
-            //Thread myThread = new Thread(new ThreadStart(SetPosition));
-            //myThread.Start();
+            meetingAddress = _meetingAddress;
 
-            var myLocation = GetCurrentLocation();
-            //map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(33, 33), Distance.FromMiles(0.05)));
+            Task meetingPoint = DisplayMeetingOnMap(_meetingAddress);
+            Console.WriteLine($"\n{meetingPoint.Status}\n");
+
+            Task myLocation = GetMyCurrentLocation();
+            Console.WriteLine($"\n{myLocation.Status}\n");
         }
         public async Task<PermissionStatus> CheckAndRequestLocationPermission()
         {
-            var status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
+            PermissionStatus status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
 
-            if (status == PermissionStatus.Granted || status == PermissionStatus.Denied)
-            {
-                return status;
-            }
-
-            return await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
+            return status == PermissionStatus.Granted || status == PermissionStatus.Denied ? status : await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
         }
-        private async Task GetDistanceBetweenTwoPoints(string address, Location myLocation)
+        private async Task GetDistanceBetweenTwoPoints(Location myLocation)
         {
-            IEnumerable<Position> approximateLocations = await geoCoder.GetPositionsForAddressAsync(address);
-            Position markPosition = approximateLocations.FirstOrDefault();
-
+            Geocoder geoCoder = new Geocoder();
+            IEnumerable<Position> approximateLocations = await geoCoder.GetPositionsForAddressAsync(meetingAddress);
+            meetingPosition = approximateLocations.FirstOrDefault();
             Position myPosition = new Position(myLocation.Latitude, myLocation.Longitude);
 
-            Distance distanceBetweenTwoPoints = Distance.BetweenPositions(markPosition, myPosition);
+            Distance distance = Distance.BetweenPositions(meetingPosition, myPosition);
+            distanceBetweenTwoPoints = (int)distance.Meters;
 
-            await DisplayAlert("Information", $"You have {(int)distanceBetweenTwoPoints.Meters} metres to the meeting point!", "OK");
+            await DisplayAlert("Information", $"You have {distanceBetweenTwoPoints} metres to the meeting point!", "OK");
 
-            /*while (true)
-            {
-                Thread.Sleep(2000);
-                map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(myLocation.Latitude, myLocation.Longitude), Distance.FromMiles(0.05)));
-                break;
-            }*/
+            await Task.Delay(TimeSpan.FromSeconds(1.25));
+
+            map.MoveToRegion(MapSpan.FromCenterAndRadius(myPosition, Distance.FromMiles(0.05)));
+
+            //TimerCallback timeCB = new TimerCallback(PrintTime);
+
+            //Timer time = new Timer(timeCB, null, 0, 1000);
         }
-        private async Task GetCurrentLocation()
+        private async void PrintTime(object state)
+        {
+            if (timeForRequest != 0)
+            {
+                LabelMetres.Text = $"You have {distanceBetweenTwoPoints} metres to the meeting point\nNext value update after {timeForRequest} seconds";
+                timeForRequest--;
+            } 
+            else
+            {
+                if (distanceBetweenTwoPoints > 50)
+                {
+                    Location location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(60)));
+                    Distance distance = Distance.BetweenPositions(meetingPosition, new Position(location.Latitude, location.Longitude));
+                    distanceBetweenTwoPoints = (int)distance.Meters;
+                }
+            }
+        }
+        private async Task GetMyCurrentLocation()
         {
             try
             {
-                var status = await CheckAndRequestLocationPermission();
+                Task<PermissionStatus> status = CheckAndRequestLocationPermission();
                 if (status.Equals("Denied"))
                 {
                     throw new PermissionException("Permission Denied");
                 }
 
-                var request = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(30));
-                var location = await Geolocation.GetLocationAsync(request);
+                GeolocationRequest request = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(60));
+                Location location = await Geolocation.GetLocationAsync(request);
 
                 if (location != null)
                 {
-                    Console.WriteLine($"LATITUDE: {location.Latitude}, LONGITUDE: {location.Longitude}, ALTITUDE: {location.Altitude}");
+                    Console.WriteLine($"\nLATITUDE: {location.Latitude}, LONGITUDE: {location.Longitude}, ALTITUDE: {location.Altitude}\n");
                 }
 
-                await GetDistanceBetweenTwoPoints(meetingAddress, location);
-
-                map.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(location.Latitude, location.Longitude), Distance.FromMiles(0.05)));
+                Task distance = GetDistanceBetweenTwoPoints(location);
+                Console.WriteLine($"+++\n{distance.Status}\n");
             }
             catch (FeatureNotSupportedException fnsEx)
             {
-                Console.WriteLine($"DATE: {DateTime.Now}, MESSAGE: {fnsEx.Message}");
+                Console.WriteLine($"\nDATE: {DateTime.Now}, MESSAGE: {fnsEx.Message}\n");
             }
             catch (FeatureNotEnabledException fneEx)
             {
-                Console.WriteLine($"DATE: {DateTime.Now}, MESSAGE: {fneEx.Message}");
+                Console.WriteLine($"\nDATE: {DateTime.Now}, MESSAGE: {fneEx.Message}\n");
             }
             catch (PermissionException pEx)
             {
-                Console.WriteLine($"DATE: {DateTime.Now}, MESSAGE: {pEx.Message}");
+                Console.WriteLine($"\nDATE: {DateTime.Now}, MESSAGE: {pEx.Message}\n");
             }
             catch (IOException ioEx)
             {
-                Console.WriteLine($"DATE: {DateTime.Now}, MESSAGE: {ioEx.Message}");
+                Console.WriteLine($"\nDATE: {DateTime.Now}, MESSAGE: {ioEx.Message}\n");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"DATE: {DateTime.Now}, MESSAGE: {ex.Message}");
+                Console.WriteLine($"\nDATE: {DateTime.Now}, MESSAGE: {ex.Message}\n");
             }
         }
-        private async void SetPosition()
+        private async Task DisplayMeetingOnMap(string meetingAddress)
         {
+            Geocoder geoCoder = new Geocoder();
             IEnumerable<Position> approximateLocations = await geoCoder.GetPositionsForAddressAsync(meetingAddress);
             Position position = approximateLocations.FirstOrDefault();
 
@@ -141,15 +158,6 @@ namespace XamarinAppWhereAll.View
             {
                 pins.Add(pin);
             }
-        }
-        private async void GetListPlaces_Clicked(object sender, EventArgs e)
-        {
-            string result = "";
-            foreach (var item in pins)
-            {
-                result += $"{item.Address}\n";
-            }
-            await DisplayAlert("Meeting Places", result, "OK");
         }
     }
 }
