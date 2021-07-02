@@ -11,6 +11,7 @@ namespace XamarinAppWhereAll.View
             InitializeComponent();
         }
 
+
         protected async override void OnAppearing()
         {
             base.OnAppearing();

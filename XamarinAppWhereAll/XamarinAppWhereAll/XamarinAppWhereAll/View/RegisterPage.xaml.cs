@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
+using System.Net.Mail;
 using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,11 +13,11 @@ namespace XamarinAppWhereAll.View
         private readonly Entry EntryLogin = new Entry();
         private readonly Entry EntryName = new Entry();
         private readonly Entry EntryPassword = new Entry();
-        private readonly Button ButtonRegister = new Button();
         public RegisterPage()
         {
             InitializeComponent();
         }
+
         protected override void OnAppearing()
         {
             StackLayout stackLayout = new StackLayout
@@ -74,12 +70,16 @@ namespace XamarinAppWhereAll.View
 
             Color color = Color.DeepPink;
 
-            ButtonRegister.Text = "Register";
-            ButtonRegister.FontSize = 18;
-            ButtonRegister.Background = new SolidColorBrush(color);
-            ButtonRegister.TextColor = Color.White;
-            ButtonRegister.HorizontalOptions = LayoutOptions.Center;
-            ButtonRegister.Margin = 3;
+            Button ButtonRegister = new Button
+            {
+                Text = "Register",
+                FontSize = 18,
+                Background = new SolidColorBrush(color),
+                TextColor = Color.White,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.EndAndExpand,
+                Margin = 15
+            };
             ButtonRegister.Clicked += ButtonRegister_Clicked;
 
             stackLayout.Children.Add(ButtonRegister);
@@ -106,6 +106,16 @@ namespace XamarinAppWhereAll.View
                     await DisplayAlert("Warning", "Fill in the password field!", "OK");
                     return;
                 }
+                if (!IsValid(EntryLogin.Text))
+                {
+                    await DisplayAlert("Warning", "Please, enter a valid login!", "OK");
+                    return;
+                }
+                if (EntryPassword.Text.Length > 0 && EntryPassword.Text.Length < 8)
+                {
+                    await DisplayAlert("Warning", "Password cannot be less than 8 characters!", "OK");
+                    return;
+                }
 
                 await firebaseHelper.AddUser(EntryName.Text, EntryLogin.Text, EntryPassword.Text, 0, 0, false);
 
@@ -114,6 +124,19 @@ namespace XamarinAppWhereAll.View
             catch (Exception e)
             {
                 await DisplayAlert("Warning", e.Message, "OK");
+            }
+        }
+
+        private bool IsValid(string mailAddress)
+        {
+            try
+            {
+                MailAddress address = new MailAddress(mailAddress);
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
             }
         }
 

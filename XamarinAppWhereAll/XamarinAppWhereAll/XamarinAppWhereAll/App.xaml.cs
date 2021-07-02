@@ -1,6 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Xamarin.Forms;
 using XamarinAppWhereAll.Models;
 using XamarinAppWhereAll.View;
 
@@ -17,9 +15,7 @@ namespace XamarinAppWhereAll
             MainPage = new EnterPage();
         }
 
-        protected override void OnStart()
-        {            
-        }
+        protected override void OnStart() { }
 
         protected override async void OnSleep()
         {
@@ -38,6 +34,5 @@ namespace XamarinAppWhereAll
                 await firebaseHelper.CheckUserInDatabase(CurrentUser.Login, CurrentUser.Password, true);
             }
         }
-
     }
 }

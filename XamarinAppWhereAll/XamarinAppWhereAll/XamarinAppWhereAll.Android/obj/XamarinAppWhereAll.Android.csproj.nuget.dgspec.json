@@ -1,24 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.Android\\XamarinAppWhereAll.Android.csproj": {}
+    "C:\\Users\\Vladislav\\source\\repos\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.Android\\XamarinAppWhereAll.Android.csproj": {}
   },
   "projects": {
-    "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.Android\\XamarinAppWhereAll.Android.csproj": {
+    "C:\\Users\\Vladislav\\source\\repos\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.Android\\XamarinAppWhereAll.Android.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.Android\\XamarinAppWhereAll.Android.csproj",
+        "projectUniqueName": "C:\\Users\\Vladislav\\source\\repos\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.Android\\XamarinAppWhereAll.Android.csproj",
         "projectName": "XamarinAppWhereAll.Android",
-        "projectPath": "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.Android\\XamarinAppWhereAll.Android.csproj",
-        "packagesPath": "C:\\Users\\shovk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.Android\\obj\\",
+        "projectPath": "C:\\Users\\Vladislav\\source\\repos\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.Android\\XamarinAppWhereAll.Android.csproj",
+        "packagesPath": "C:\\Users\\Vladislav\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Vladislav\\source\\repos\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.Android\\obj\\",
         "projectStyle": "PackageReference",
         "skipContentFileWrite": true,
         "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\shovk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vladislav\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -32,8 +34,8 @@
         "frameworks": {
           "monoandroid11.0": {
             "projectReferences": {
-              "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj": {
-                "projectPath": "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj"
+              "C:\\Users\\Vladislav\\source\\repos\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj": {
+                "projectPath": "C:\\Users\\Vladislav\\source\\repos\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj"
               }
             }
           }
@@ -49,26 +51,6 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.1, )"
-            },
-            "Xamarin.Android.Support.Core.Utils": {
-              "target": "Package",
-              "version": "[28.0.0.3, )"
-            },
-            "Xamarin.Android.Support.CustomTabs": {
-              "target": "Package",
-              "version": "[28.0.0.3, )"
-            },
-            "Xamarin.Android.Support.Design": {
-              "target": "Package",
-              "version": "[28.0.0.3, )"
-            },
-            "Xamarin.Android.Support.v4": {
-              "target": "Package",
-              "version": "[28.0.0.3, )"
-            },
-            "Xamarin.AndroidX.RecyclerView": {
-              "target": "Package",
-              "version": "[1.2.1, )"
             },
             "Xamarin.Essentials": {
               "target": "Package",
@@ -90,20 +72,22 @@
         }
       }
     },
-    "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj": {
+    "C:\\Users\\Vladislav\\source\\repos\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj",
+        "projectUniqueName": "C:\\Users\\Vladislav\\source\\repos\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj",
         "projectName": "XamarinAppWhereAll",
-        "projectPath": "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj",
-        "packagesPath": "C:\\Users\\shovk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\shovk\\Desktop\\bomj\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\obj\\",
+        "projectPath": "C:\\Users\\Vladislav\\source\\repos\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll.csproj",
+        "packagesPath": "C:\\Users\\Vladislav\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Vladislav\\source\\repos\\XamarinAppWhereAll\\XamarinAppWhereAll\\XamarinAppWhereAll\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\shovk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Vladislav\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -167,7 +151,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

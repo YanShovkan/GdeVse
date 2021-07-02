@@ -7,37 +7,38 @@ using Xamarin.Forms.Maps;
 using Xamarin.Essentials;
 using Xamarin.Forms.Xaml;
 using System.IO;
-using System.Threading;
+using System.Timers;
+using XamarinAppWhereAll.Models;
 
 namespace XamarinAppWhereAll.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MapPage : ContentPage
     {
-        private readonly List<Pin> pins = new List<Pin>();
-        private readonly string meetingAddress = "";
+        private readonly FirebaseHelper firebaseHelper = new FirebaseHelper();
         private Position meetingPosition = new Position();
-        private int timeForRequest = 20;
-        private int distanceBetweenTwoPoints;
+        private readonly string meetingAddress = "";
+        private List<UserModel> users;
+        private Pin meetingPoint;
         public MapPage(string _meetingAddress)
         {
             InitializeComponent();
 
             meetingAddress = _meetingAddress;
 
-            Task meetingPoint = DisplayMeetingOnMap(_meetingAddress);
-            Console.WriteLine($"\n{meetingPoint.Status}\n");
-
-            Task myLocation = GetMyCurrentLocation();
-            Console.WriteLine($"\n{myLocation.Status}\n");
+            DisplayMeetingOnMap(_meetingAddress);
+            GetMyCurrentLocation();
+            DisplayUsersOnMap(App.CurrentUser.Login);
         }
+
         public async Task<PermissionStatus> CheckAndRequestLocationPermission()
         {
             PermissionStatus status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
 
             return status == PermissionStatus.Granted || status == PermissionStatus.Denied ? status : await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
         }
-        private async Task GetDistanceBetweenTwoPoints(Location myLocation)
+
+        private async void GetDistanceBetweenTwoPoints(Location myLocation)
         {
             Geocoder geoCoder = new Geocoder();
             IEnumerable<Position> approximateLocations = await geoCoder.GetPositionsForAddressAsync(meetingAddress);
@@ -45,36 +46,15 @@ namespace XamarinAppWhereAll.View
             Position myPosition = new Position(myLocation.Latitude, myLocation.Longitude);
 
             Distance distance = Distance.BetweenPositions(meetingPosition, myPosition);
-            distanceBetweenTwoPoints = (int)distance.Meters;
 
-            await DisplayAlert("Information", $"You have {distanceBetweenTwoPoints} metres to the meeting point!", "OK");
+            await DisplayAlert("Information", $"You have {(int)distance.Meters} metres to the meeting point!", "OK");
 
             await Task.Delay(TimeSpan.FromSeconds(1.25));
 
             map.MoveToRegion(MapSpan.FromCenterAndRadius(myPosition, Distance.FromMiles(0.05)));
-
-            //TimerCallback timeCB = new TimerCallback(PrintTime);
-
-            //Timer time = new Timer(timeCB, null, 0, 1000);
         }
-        private async void PrintTime(object state)
-        {
-            if (timeForRequest != 0)
-            {
-                LabelMetres.Text = $"You have {distanceBetweenTwoPoints} metres to the meeting point\nNext value update after {timeForRequest} seconds";
-                timeForRequest--;
-            } 
-            else
-            {
-                if (distanceBetweenTwoPoints > 50)
-                {
-                    Location location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(60)));
-                    Distance distance = Distance.BetweenPositions(meetingPosition, new Position(location.Latitude, location.Longitude));
-                    distanceBetweenTwoPoints = (int)distance.Meters;
-                }
-            }
-        }
-        private async Task GetMyCurrentLocation()
+
+        private async void GetMyCurrentLocation()
         {
             try
             {
@@ -87,13 +67,7 @@ namespace XamarinAppWhereAll.View
                 GeolocationRequest request = new GeolocationRequest(GeolocationAccuracy.Best, TimeSpan.FromSeconds(60));
                 Location location = await Geolocation.GetLocationAsync(request);
 
-                if (location != null)
-                {
-                    Console.WriteLine($"\nLATITUDE: {location.Latitude}, LONGITUDE: {location.Longitude}, ALTITUDE: {location.Altitude}\n");
-                }
-
-                Task distance = GetDistanceBetweenTwoPoints(location);
-                Console.WriteLine($"+++\n{distance.Status}\n");
+                await firebaseHelper.UpdateUser(App.CurrentUser.Login, App.CurrentUser.UserName, location.Longitude, location.Latitude);
             }
             catch (FeatureNotSupportedException fnsEx)
             {
@@ -116,7 +90,8 @@ namespace XamarinAppWhereAll.View
                 Console.WriteLine($"\nDATE: {DateTime.Now}, MESSAGE: {ex.Message}\n");
             }
         }
-        private async Task DisplayMeetingOnMap(string meetingAddress)
+
+        private async void DisplayMeetingOnMap(string meetingAddress)
         {
             Geocoder geoCoder = new Geocoder();
             IEnumerable<Position> approximateLocations = await geoCoder.GetPositionsForAddressAsync(meetingAddress);
@@ -132,7 +107,7 @@ namespace XamarinAppWhereAll.View
                 }
             }
 
-            Pin pin = new Pin
+            meetingPoint = new Pin
             {
                 Label = "Meeting point",
                 Address = meetingAddress,
@@ -149,15 +124,56 @@ namespace XamarinAppWhereAll.View
                 FillColor = Color.FromHex("#88FFC0CB")
             };
 
-            map.Pins.Add(pin);
+            map.Pins.Add(meetingPoint);
             map.MapElements.Add(circle);
             map.MoveToRegion(MapSpan.FromCenterAndRadius(position, Distance.FromMiles(0.05)));
+        }
 
-            int count = pins.Where(rec => rec.Address.ToLower().Equals(pin.Address.ToLower())).Count();
-            if (count == 0)
+        private async void DisplayUsersOnMap(string Login)
+        {
+            users = await firebaseHelper.GetFilteredUsers(Login);
+
+            foreach (UserModel user in users)
             {
-                pins.Add(pin);
+                Pin pin = new Pin
+                {
+                    Label = "User",
+                    Address = user.UserName,
+                    Type = PinType.Place,
+                    Position = new Position(user.Latitude, user.Longitude)
+                };
+                map.Pins.Add(pin);
             }
+
+            UserModel currentUser = await firebaseHelper.GetUser(Login);
+
+            GetDistanceBetweenTwoPoints(new Location(currentUser.Latitude, currentUser.Longitude));
+
+            Timer timer = new Timer(20000);
+            timer.Elapsed += (sender, e) => HandleTimer();
+            timer.Start();
+        }
+
+        private async void HandleTimer()
+        {
+            GetMyCurrentLocation();
+
+            users = await firebaseHelper.GetFilteredUsers(App.CurrentUser.Login);
+
+            map.Pins.Clear();
+
+            foreach (UserModel user in users)
+            {
+                Pin pin = new Pin
+                {
+                    Label = "User",
+                    Address = user.UserName,
+                    Type = PinType.Place,
+                    Position = new Position(user.Latitude, user.Longitude)
+                };
+                map.Pins.Add(pin);
+            }
+            map.Pins.Add(meetingPoint);
         }
     }
 }

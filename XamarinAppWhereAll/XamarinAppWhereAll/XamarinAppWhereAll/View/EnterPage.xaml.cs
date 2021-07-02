@@ -1,12 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XamarinAppWhereAll.Models;
 
 namespace XamarinAppWhereAll.View
 {
@@ -62,34 +56,58 @@ namespace XamarinAppWhereAll.View
 
             Color color = Color.DeepPink;
 
-            Button ButtonEnter = new Button();
-            ButtonEnter.Text = "Enter";
-            ButtonEnter.FontSize = 18;
-            ButtonEnter.Background = new SolidColorBrush(color);
-            ButtonEnter.TextColor = Color.White;
-            ButtonEnter.HorizontalOptions = LayoutOptions.Center;
-            ButtonEnter.Margin = 3;
+            Button ButtonEnter = new Button
+            {
+                Text = "Enter",
+                FontSize = 18,
+                Background = new SolidColorBrush(color),
+                TextColor = Color.White,
+                HorizontalOptions = LayoutOptions.Center,
+                Margin = 15
+            };
             ButtonEnter.Clicked += ButtonEnter_Clicked;
 
-            stackLayout.Children.Add(ButtonEnter);
+            Button ButtonRegister = new Button
+            {
+                Text = "Register",
+                FontSize = 18,
+                Background = new SolidColorBrush(color),
+                TextColor = Color.White,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.EndAndExpand,
+                Margin = 15
+            };
+            ButtonRegister.Clicked += ButtonRegister_Clicked;
 
-            Button ButtonRegister = new Button();
-            ButtonRegister.Text = "Register";
-            ButtonRegister.FontSize = 18;
-            ButtonRegister.Background = new SolidColorBrush(color);
-            ButtonRegister.TextColor = Color.White;
-            ButtonRegister.HorizontalOptions = LayoutOptions.Center;
-            ButtonRegister.Margin = 3;
-            ButtonRegister.Clicked += ButtonRegister_Clicked; ;
+            StackLayout stackLayoutForButtons = new StackLayout
+            {
+                Orientation = StackOrientation.Horizontal,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.EndAndExpand,
+                Children =
+                {
+                    ButtonEnter,
+                    new Label
+                    {
+                        Text = "OR",
+                        HorizontalOptions = LayoutOptions.CenterAndExpand,
+                        VerticalOptions = LayoutOptions.Center,
+                        TextColor = Color.Black,
+                        FontSize = 18,
+                        Margin = 15
+                    },
+                    ButtonRegister,
+                }
+            };
 
-            stackLayout.Children.Add(ButtonRegister);
+            stackLayout.Children.Add(stackLayoutForButtons);
 
             Content = stackLayout;
         }
 
-        private void ButtonRegister_Clicked(object sender, EventArgs e)
+        private async void ButtonRegister_Clicked(object sender, EventArgs e)
         {
-            Application.Current.MainPage = new RegisterPage();
+            await Navigation.PushModalAsync(new RegisterPage());
         }
 
         private async void ButtonEnter_Clicked(object sender, EventArgs e)

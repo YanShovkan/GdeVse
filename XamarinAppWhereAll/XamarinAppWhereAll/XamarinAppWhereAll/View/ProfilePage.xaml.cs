@@ -9,8 +9,7 @@ namespace XamarinAppWhereAll.View
     public partial class ProfilePage : ContentPage
     {
         private readonly FirebaseHelper firebaseHelper = new FirebaseHelper();
-        Entry EntryUserName = new Entry();
-        Button ButtonSaveProfileInfo = new Button();
+        private readonly Entry EntryUserName = new Entry();
         public ProfilePage()
         {
             InitializeComponent();
@@ -43,16 +42,18 @@ namespace XamarinAppWhereAll.View
                 }
             };
 
-            ButtonSaveProfileInfo.Text = "Save";
-            ButtonSaveProfileInfo.FontSize = 18;
-
             Color color = Color.DeepPink;
-            ButtonSaveProfileInfo.Background = new SolidColorBrush(color);
 
-            ButtonSaveProfileInfo.TextColor = Color.White;
-            ButtonSaveProfileInfo.HorizontalOptions = LayoutOptions.Center;
-            ButtonSaveProfileInfo.VerticalOptions = LayoutOptions.EndAndExpand;
-            ButtonSaveProfileInfo.Margin = 15;
+            Button ButtonSaveProfileInfo = new Button
+            {
+                Text = "Save",
+                FontSize = 18,
+                Background = new SolidColorBrush(color),
+                TextColor = Color.White,
+                HorizontalOptions = LayoutOptions.Center,
+                VerticalOptions = LayoutOptions.EndAndExpand,
+                Margin = 15
+            };
             ButtonSaveProfileInfo.Clicked += new EventHandler(ButtonSaveProfileInfo_Clicked);
 
             stackLayout.Children.Add(EntryUserName);
@@ -60,6 +61,7 @@ namespace XamarinAppWhereAll.View
 
             Content = stackLayout;
         }
+
         private async Task SaveItem()
         {
             try
@@ -70,7 +72,9 @@ namespace XamarinAppWhereAll.View
                     return;
                 }
 
-                await firebaseHelper.UpdateUser(App.CurrentUser.Login, EntryUserName.Text);
+                await firebaseHelper.UpdateUser(App.CurrentUser.Login, EntryUserName.Text, -1, -1);
+
+                App.CurrentUser.UserName = EntryUserName.Text;
 
                 Application.Current.MainPage = new MainPage();
             }
